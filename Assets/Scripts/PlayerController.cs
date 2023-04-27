@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour
 
     //Player Jump Variables
     public float jumpStrength = 0f;
-    private bool hasDoubleJump = false;
+    private bool hasDoubleJump = true;
     private int totalJumps = 0;
     private bool isGrounded = true;
     
+    //Cheese Variables
+    public int totalCheese = 0;
     
 
     // Start is called before the first frame update
@@ -80,5 +82,11 @@ public class PlayerController : MonoBehaviour
             totalJumps++;
             playerRB.AddForce(new Vector2(0f, jumpStrength), ForceMode2D.Impulse);
         }
+    }
+    
+    // Cheese Modifier
+    public void EditCheese(int amount)
+    {
+        totalCheese += amount;
     }
 }
