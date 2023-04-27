@@ -579,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &612879382
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1271,7 +1271,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Help Ratthew traverse the Temple of Cheese to make it to the moon! \nGather
-    cheese found around the temple and sacrifice it to "
+    cheese found around the temple and sacrifice it to the Cheese Gods to progress
+    further\n\nA/D - Move Left/Right\nSpace- Jump\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35f59bd99f9e26347b6cb92a21e6811e, type: 2}
   m_sharedMaterial: {fileID: 3487930828184488128, guid: 35f59bd99f9e26347b6cb92a21e6811e, type: 2}
@@ -1298,8 +1299,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.85
-  m_fontSizeBase: 47.85
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
