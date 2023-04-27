@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             scale.x = -Mathf.Abs(scale.x);
         }
 
-        transform.localScale = scale;
+        transform.localScale = new Vector3(moveX,1,1);
 
         transform.position += new Vector3(moveX, 0f, 0f) * (speed) * Time.deltaTime;
     }
@@ -89,4 +89,5 @@ public class PlayerController : MonoBehaviour
     {
         totalCheese += amount;
     }
+
 }
