@@ -15,7 +15,10 @@ public class CheeseWheelEnemy : MonoBehaviour
     private float damageCooldown = 0.3f;
     private float timer = 0f;
 
-    public HealthManager player;
+    public GameObject player;
+    private HealthManager playerHM;
+    private Rigidbody2D playerRB;
+    private PlayerController playerC;
     
     
     // Start is called before the first frame update
@@ -23,6 +26,9 @@ public class CheeseWheelEnemy : MonoBehaviour
     {
         //animator = GetComponent<Animator>();
         startingPos = transform.position;
+        playerHM = player.GetComponent<HealthManager>();
+        playerRB = player.GetComponent<Rigidbody2D>();
+        playerC = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -65,7 +71,8 @@ public class CheeseWheelEnemy : MonoBehaviour
     {
         if (col.CompareTag("Player") && timer <=0)
         {
-            player.editHealth(-1);
+            playerHM.editHealth(-1);
+            playerRB.AddForce(Vector2.up + new Vector2((playerC.moveX)*-1, 0) * new Vector2(playerC.jumpStrength,playerC.jumpStrength), ForceMode2D.Impulse);
             timer = damageCooldown;
         }
     }

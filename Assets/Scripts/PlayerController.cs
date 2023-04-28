@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     //Player Speed Variables
     public float speed = 0f;
+    public float moveX = 0f;
 
     //Player Jump Variables
     public float jumpStrength = 0f;
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
     // Player AD Movement
     private void PlayerMovement()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
+        moveX = Input.GetAxisRaw("Horizontal");
         Vector3 scale = transform.localScale;
 
         //Player Direction
