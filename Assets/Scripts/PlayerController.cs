@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+
     //Player Rigid Body
     private Rigidbody2D playerRB;
 
@@ -20,12 +22,14 @@ public class PlayerController : MonoBehaviour
     
     //Cheese Variables
     public int totalCheese = 0;
+    public TMP_Text cheeseIndicator;
     
 
     // Start is called before the first frame update
     void Start()
     {
         playerRB = this.GetComponent<Rigidbody2D>();
+        cheeseIndicator.text = "testing";
     }
 
     // Update is called once per frame
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
         JumpHandler();
+        cheeseIndicator.text = totalCheese.ToString();
     }
     
     // Player AD Movement
@@ -45,12 +50,17 @@ public class PlayerController : MonoBehaviour
         if (moveX > 0)
         {
             scale.x = Mathf.Abs(scale.x);
-        }else if (moveX < 0)
+        }
+
+        if (moveX < 0)
         {
             scale.x = -Mathf.Abs(scale.x);
         }
 
-        transform.localScale = new Vector3(moveX,1,1);
+        if (Mathf.Abs(moveX) > 0)
+        {
+            transform.localScale = scale;
+        }
 
         transform.position += new Vector3(moveX, 0f, 0f) * (speed) * Time.deltaTime;
     }

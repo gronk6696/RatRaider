@@ -1,21 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthManager : MonoBehaviour
 {
     public int health = 0;
-
     public int maxHealth = 0;
-    // Start is called before the first frame update
-    void Start()
+
+    public GameObject deathScreen;
+    public TMP_Text healthIndicator;
+
+    private PlayerController controls;
+
+    private void Start()
     {
-        
+        controls = GetComponent<PlayerController>();
+        healthIndicator.text = "test";
     }
 
-    // Update is called once per frame
+    public void editHealth(int amount)
+    {
+        health += amount;
+    }
+    
     void Update()
     {
-        
+        DeathCheck();
+        healthIndicator.text = health.ToString();
     }
+
+    public void DeathCheck()
+    {
+        if (health <= 0)
+        {
+            Debug.Log("death");
+            Destroy(controls);
+            deathScreen.SetActive(true);
+        }
+    }
+    
+    
+    
 }
