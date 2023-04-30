@@ -1,12 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class CheeseWheelEnemy : MonoBehaviour
+public class SkewerEnemy : MonoBehaviour
 {
-    //Wheel movement
+//Wheel movement
     public float movementRadius;
     public float movementSpeed;
     private Vector3 currentPos;
@@ -80,12 +78,14 @@ public class CheeseWheelEnemy : MonoBehaviour
     //Damage Handler
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player") && timer <=0)
+        if (col.CompareTag("Player") && timer <= 0)
         {
             playerHM.editHealth(-damage);
-            
+
             //knock back 
-            playerRB.AddForce(Vector2.up + new Vector2((playerC.moveX)*-1, 0) * new Vector2(playerC.jumpStrength,playerC.jumpStrength), ForceMode2D.Impulse);
+            playerRB.AddForce(
+                Vector2.up + new Vector2((playerC.moveX) * -1, 0) *
+                new Vector2(playerC.jumpStrength, playerC.jumpStrength), ForceMode2D.Impulse);
 
             timer = damageCooldown;
         }
