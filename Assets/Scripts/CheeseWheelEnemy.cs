@@ -82,7 +82,7 @@ public class CheeseWheelEnemy : MonoBehaviour
     {
         if (col.CompareTag("Player") && timer <=0)
         {
-            playerHM.editHealth(-damage);
+            playerHM.minusHealth(damage);
             
             //knock back 
             playerRB.AddForce(Vector2.up + new Vector2((playerC.moveX)*-1, 0) * new Vector2(playerC.jumpStrength,playerC.jumpStrength), ForceMode2D.Impulse);

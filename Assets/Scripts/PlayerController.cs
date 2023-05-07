@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     // reference to the script that changes levels
     // reference to the cheese monk that appears in level 2
     
-    public LevelChanger sceneManagerScript;
-    public HealthManager healthscript;
+    private LevelChanger sceneManagerScript;
+    private HealthManager healthscript;
     public GameObject ShrinePanel;
     public GameObject cheeseBridge;
     private int cheeseTax = 3;
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI paymentText;
     public TextMeshProUGUI buttonPromptText;
 
+    private HealthManager playerHealth;
 
     //Player Rigid Body
     private Rigidbody2D playerRB;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     //Player Jump Variables
     public float jumpStrength = 0f;
-    private bool hasDoubleJump = true;
+    public bool hasDoubleJump = false;
     private int totalJumps = 0;
     private bool isGrounded = true;
     
@@ -46,11 +47,21 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRB = this.GetComponent<Rigidbody2D>();
+        healthscript = this.GetComponent<HealthManager>();
+        sceneManagerScript = this.GetComponent<LevelChanger>();
         cheeseIndicator.text = "testing";
 
         // set the shrine panel and cheese bridge to false on start
         ShrinePanel.SetActive(false);
         cheeseBridge.SetActive(false);
+
+
+        hasDoubleJump = (PlayerPrefs.GetString("doubleJump", "false")== "true");
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetString("doubleJump", hasDoubleJump.ToString());
     }
 
     // Update is called once per frame
@@ -97,8 +108,9 @@ public class PlayerController : MonoBehaviour
             totalJumps = 0;
         }
 
-        if(col.CompareTag("Spike")){
-            healthscript.minusHealth(20);
+        if(col.CompareTag("Spike"))
+        {
+            healthscript.editHealth(-healthscript.health);
 
         }
 
