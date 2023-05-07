@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -107,13 +108,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (col.CompareTag("Monk")){
-            GameObject DialogueBox = GameObject.FindGameObjectWithTag("Dialogue");
-            if (DialogueBox!= null)
-            {
-                DialogueBox.SetActive(true);
-            }
-        }
     }
 
     private void OnTriggerStay2D(Collider2D col)
@@ -124,9 +118,12 @@ public class PlayerController : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.C)){
                 payOffering();
-
-
             }
+        }
+
+            if (col.CompareTag("Monk")){
+            GameObject DialogueBox = GameObject.FindGameObjectWithTag("Dialogue");
+
         }
 
     }
@@ -140,6 +137,14 @@ public class PlayerController : MonoBehaviour
 
         if(other.CompareTag("Shrine")){
             ShrinePanel.SetActive(false);
+        }
+
+        if(other.CompareTag("Monk")){
+            GameObject DialogueBox = GameObject.FindGameObjectWithTag("Dialogue");
+            if (DialogueBox!= null)
+            {
+                DialogueBox.SetActive(true);
+            }
         }
     }
 
