@@ -15,6 +15,7 @@ public class HealthManager : MonoBehaviour
     private PlayerController controls;
 
     public bool invincible = false;
+    public GameObject forcefield;
 
     private void Start()
     {
@@ -47,6 +48,15 @@ public class HealthManager : MonoBehaviour
     {
         DeathCheck();
         healthIndicator.text = health.ToString();
+
+        if (invincible)
+        {
+            forcefield.SetActive(true);
+        }
+        else
+        {
+            forcefield.SetActive(false);
+        }
     }
 
     public void DeathCheck()
