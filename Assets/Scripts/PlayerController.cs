@@ -7,12 +7,26 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    // Laurens additional variables
+    // reference to healthManager script
+    // Reference to the Panel that appears when the player gets close to a Shrine
+    // reference to the platform that appears when the offering is paid
+    public LevelChanger sceneManagerScript;
+    public HealthManager healthscript;
+    public GameObject ShrinePanel;
+    public GameObject cheeseBridge;
+    private int cheeseTax = 3;
+    private bool OfferingPaid = false;
+    public TextMeshProUGUI paymentText;
+    public TextMeshProUGUI buttonPromptText;
+
 
     //Player Rigid Body
     private Rigidbody2D playerRB;
 
     //Player Speed Variables
     public float speed = 0f;
+    public float moveX = 0f;
 
     //Player Jump Variables
     public float jumpStrength = 0f;
@@ -30,6 +44,10 @@ public class PlayerController : MonoBehaviour
     {
         playerRB = this.GetComponent<Rigidbody2D>();
         cheeseIndicator.text = "testing";
+
+        // set the shrine panel and cheese bridge to false on start
+        ShrinePanel.SetActive(false);
+        cheeseBridge.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,6 +62,8 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
+        moveX = Input.GetAxisRaw("Horizontal");
+
         Vector3 scale = transform.localScale;
 
         //Player Direction
@@ -73,6 +93,31 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             totalJumps = 0;
         }
+
+        if(col.CompareTag("Spike")){
+            healthscript.minusHealth(20);
+
+        }
+
+        if (col.CompareTag("Exit")){
+            sceneManagerScript.loadNextLevel();
+
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if(col.CompareTag("Shrine")){
+
+            ShrinePanel.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.C)){
+                payOffering();
+
+
+            }
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -80,6 +125,10 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+
+        if(other.CompareTag("Shrine")){
+            ShrinePanel.SetActive(false);
         }
     }
 
@@ -100,4 +149,17 @@ public class PlayerController : MonoBehaviour
         totalCheese += amount;
     }
 
+    public void payOffering(){
+
+        if(totalCheese >= cheeseTax && !OfferingPaid)
+        {
+            OfferingPaid = true;
+            totalCheese -= (cheeseTax);
+            cheeseBridge.SetActive(true);
+            ShrinePanel.SetActive(false);
+            paymentText.text = "This Offering is acceptable. You may proceed.";
+            buttonPromptText.text = " ";
+
+        }
+    }
 }

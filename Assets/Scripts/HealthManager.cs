@@ -24,6 +24,11 @@ public class HealthManager : MonoBehaviour
     {
         health += amount;
     }
+
+    public void minusHealth(int amount){
+        health -= amount;
+
+    }
     
     void Update()
     {
