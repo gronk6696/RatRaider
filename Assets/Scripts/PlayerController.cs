@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     // reference to healthManager script
     // Reference to the Panel that appears when the player gets close to a Shrine
     // reference to the platform that appears when the offering is paid
+    // reference to the script that changes levels
+    // reference to the cheese monk that appears in level 2
+    
     public LevelChanger sceneManagerScript;
     public HealthManager healthscript;
     public GameObject ShrinePanel;
@@ -102,6 +105,14 @@ public class PlayerController : MonoBehaviour
         if (col.CompareTag("Exit")){
             sceneManagerScript.loadNextLevel();
 
+        }
+
+        if (col.CompareTag("Monk")){
+            GameObject DialogueBox = GameObject.FindGameObjectWithTag("Dialogue");
+            if (DialogueBox!= null)
+            {
+                DialogueBox.SetActive(true);
+            }
         }
     }
 
