@@ -6582,7 +6582,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -1579715841, guid: 539264d4b00974013a94aeef2513e86c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8696,7 +8696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementRadius: 2
   movementSpeed: 5
-  damage: 5
+  damage: 1
   player: {fileID: 116245230}
 --- !u!1 &1830605697
 GameObject:
@@ -9309,7 +9309,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: a841772a530ed43fb879ef7ac73091c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
