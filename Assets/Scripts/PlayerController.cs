@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     // reference to healthManager script
     // Reference to the Panel that appears when the player gets close to a Shrine
     // reference to the platform that appears when the offering is paid
+    public LevelChanger sceneManagerScript;
     public HealthManager healthscript;
     public GameObject ShrinePanel;
     public GameObject cheeseBridge;
@@ -95,6 +96,11 @@ public class PlayerController : MonoBehaviour
 
         if(col.CompareTag("Spike")){
             healthscript.minusHealth(20);
+
+        }
+
+        if (col.CompareTag("Exit")){
+            sceneManagerScript.loadNextLevel();
 
         }
     }
