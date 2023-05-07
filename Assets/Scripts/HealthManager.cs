@@ -14,20 +14,33 @@ public class HealthManager : MonoBehaviour
 
     private PlayerController controls;
 
+    public bool invincible = false;
+
     private void Start()
     {
         controls = GetComponent<PlayerController>();
         healthIndicator.text = "test";
+
+        invincible = PlayerPrefs.GetString("invincible", "false") == "true";
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetString("invincible",invincible.ToString());
     }
 
     public void editHealth(int amount)
     {
+        
         health += amount;
+        
     }
 
     public void minusHealth(int amount){
-        health -= amount;
-
+        if (!invincible)
+        {
+            health -= amount;
+        }
     }
     
     void Update()
