@@ -10,6 +10,8 @@ TagManager:
   - Spike
   - Shrine
   - Exit
+  - Monk
+  - Dialogue
   layers:
   - Default
   - TransparentFX
