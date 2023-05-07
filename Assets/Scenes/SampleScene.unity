@@ -514,6 +514,7 @@ MonoBehaviour:
   paymentText: {fileID: 1535420874}
   buttonPromptText: {fileID: 1754420501}
   speed: 5
+  moveX: 0
   jumpStrength: 12
   totalCheese: 0
   cheeseIndicator: {fileID: 661732658}
@@ -8603,9 +8604,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1805576167}
   - component: {fileID: 1805576166}
-  - component: {fileID: 1805576165}
   - component: {fileID: 1805576164}
   - component: {fileID: 1805576168}
+  - component: {fileID: 1805576169}
   m_Layer: 0
   m_Name: Enemy Wheel
   m_TagString: Enemy
@@ -8629,21 +8630,6 @@ CircleCollider2D:
   m_Offset: {x: 0.6, y: -1.15}
   serializedVersion: 2
   m_Radius: 0.7148831
---- !u!114 &1805576165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805576163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e36e7f84de796b840905982a3316399b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementRadius: 1
-  movementSpeed: 2
-  player: {fileID: 116245236}
 --- !u!95 &1805576166
 Animator:
   serializedVersion: 5
@@ -8696,6 +8682,22 @@ CircleCollider2D:
   m_Offset: {x: 0.59, y: -1.11}
   serializedVersion: 2
   m_Radius: 0.9002247
+--- !u!114 &1805576169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805576163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e40e70e063ff4445be174d46429a997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementRadius: 2
+  movementSpeed: 5
+  damage: 5
+  player: {fileID: 116245230}
 --- !u!1 &1830605697
 GameObject:
   m_ObjectHideFlags: 0
