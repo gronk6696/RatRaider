@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public HealthManager healthscript;
     public GameObject ShrinePanel;
     public GameObject cheeseBridge;
-    private int cheeseTax = 3;
+    private int cheeseTax = 5;
     private bool OfferingPaid = false;
     public TextMeshProUGUI paymentText;
     public TextMeshProUGUI buttonPromptText;
