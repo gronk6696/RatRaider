@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 242860277}
   m_Layer: 0
   m_Name: Monk Dialogue Canvas
-  m_TagString: Untagged
+  m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 291850324}
   m_Layer: 0
   m_Name: Monk
-  m_TagString: Untagged
+  m_TagString: Monk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

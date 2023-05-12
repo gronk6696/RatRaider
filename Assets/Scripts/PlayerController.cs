@@ -115,6 +115,11 @@ public class PlayerController : MonoBehaviour
                 payOffering();
             }
         }
+        if(col.CompareTag("Monk"))
+        {
+            GameObject DialogueBox = GameObject.FindGameObjectWithTag("Dialogue");
+            DialogueBox.SetActive(true);
+        }
 
     }
 
@@ -127,6 +132,16 @@ public class PlayerController : MonoBehaviour
 
         if(other.CompareTag("Shrine")){
             ShrinePanel.SetActive(false);
+        }
+
+        if (other.CompareTag("Monk"))
+        {
+            GameObject DialogueBox = GameObject.FindGameObjectWithTag("Dialogue");
+            DialogueBox.SetActive(false);
+            //if (DialogueBox != null)
+            //{
+            //DialogueBox.SetActive(true) ;
+            //}
         }
     }
 
